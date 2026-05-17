@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập thao tác mảng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.8;
+        }
+        .exercise {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            width: 250px;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .output {
+            margin-top: 10px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="exercise">
+        <h3>Bài 1: Nối các phần tử trong mảng thành chuỗi</h3>
+        <button onclick="runBox1()">Chạy Bài 1</button>
+        <div id="output1" class="output"></div>
+    </div>
+
+    <div class="exercise">
+        <h3>Bài 2: Chèn dấu "-" giữa các số chẵn</h3>
+        <input type="text" id="inputNumber" placeholder="Nhập chuỗi số (Ví dụ: 025468)">
+        <button onclick="runBox2()">Chuyển đổi</button>
+        <div id="output2" class="output"></div>
+    </div>
+
+    <div class="exercise">
+        <h3>Bài 3: Chuyển đổi chữ thường sang chữ hoa và ngược lại</h3>
+        <input type="text" id="inputText" placeholder="Nhập chuỗi văn bản">
+        <button onclick="runBox3()">Chuyển đổi</button>
+        <div id="output3" class="output"></div>
+    </div>
+
+    <script>
+        function runBox1() {
+            let myColor = ["Red", "Green", "White", "Black"];
+            let result = myColor.join(",");
+            document.getElementById("output1").innerHTML = "Kết quả: " + result;
+        }
+
+        function runBox2() {
+            let str = document.getElementById("inputNumber").value;
+            let result = [];
+            
+            for (let i = 0; i < str.length; i++) {
+                if (str[i - 1] % 2 === 0 && str[i] % 2 === 0) {
+                    result.push("-", str[i]);
+                } else {
+                    result.push(str[i]);
+                }
+            }
+            
+            document.getElementById("output2").innerHTML = "Kết quả: " + result.join("");
+        }
+
+        function runBox3() {
+            let str = document.getElementById("inputText").value;
+            let UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let LOWER = 'abcdefghijklmnopqrstuvwxyz';
+            let result = [];
+            
+            for (let i = 0; i < str.length; i++) {
+                if (UPPER.indexOf(str[i]) !== -1) {
+                    result.push(str[i].toLowerCase());
+                } else if (LOWER.indexOf(str[i]) !== -1) {
+                    result.push(str[i].toUpperCase());
+                } else {
+                    result.push(str[i]);
+                }
+            }
+            
+            document.getElementById("output3").innerHTML = "Kết quả: " + result.join("");
+        }
+    </script>
+
+</body>
+</html>

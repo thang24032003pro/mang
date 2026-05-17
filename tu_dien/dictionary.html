@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ điển đơn giản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="text"] {
+            padding: 6px;
+            width: 200px;
+            font-size: 16px;
+        }
+        button {
+            padding: 6px 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Từ Điển Anh - Việt</h3>
+    <input type="text" id="keyword" placeholder="Nhập từ tiếng Anh...">
+    <button onclick="translateWord()">Tra cứu</button>
+    <div id="result"></div>
+
+    <script>
+        const englishWords = ["banana", "apple", "orange", "grape", "watermelon"];
+        const vietnameseWords = ["quả chuối", "quả táo", "quả cam", "quả nho", "quả dưa hấu"];
+
+        function translateWord() {
+            let input = document.getElementById("keyword").value.trim().toLowerCase();
+            let displayElement = document.getElementById("result");
+            let index = -1;
+
+            for (let i = 0; i < englishWords.length; i++) {
+                if (englishWords[i] === input) {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index !== -1) {
+                displayElement.innerHTML = "Nghĩa là: " + vietnameseWords[index];
+            } else {
+                displayElement.innerHTML = "Không tìm thấy";
+            }
+        }
+    </script>
+
+</body>
+</html>
