@@ -1,0 +1,28 @@
+========================================================================
+HỆ THỐNG DATASTREAM - NHẬT KÝ KIỂM THỬ (TEST REPORT)
+========================================================================
+
+--- BỘ DỮ LIỆU CHUẨN (MẶC ĐỊNH) ---
+- Kết quả Emails: [ 'alice@mail.com', 'charlie@mail.com' ]
+- Kết quả Total Revenue: 1300
+- Đánh giá: Khớp hoàn toàn với kết quả của đoạn mã mã nguồn cũ (Legacy Code).
+
+--- BỘ DỮ LIỆU NHIỄU VÀ SAI LỆCH (EDGE CASES) ---
+Cấu trúc mảng thử nghiệm rác được đưa vào:
+[
+    { id: 1, name: "UserA", role: "vip", email: "usera@mail.com", totalSpent: 200 },
+    { id: 2, name: "UserB", role: "VIP", totalSpent: 300 },
+    { id: 3, name: "UserC", role: "VIP", email: "userc@mail.com", totalSpent: "500" },
+    { id: 4, name: "UserD", role: "VIP", email: "userd@mail.com", totalSpent: -100 },
+    null,
+    {}
+]
+
+- Kết quả Emails sau khi chạy qua bộ lọc an toàn: [ 'userc@mail.com', 'userd@mail.com' ]
+- Kết quả Total Revenue sau khi ép kiểu số: 700
+
+- Nhận xét tính cứng cáp của mã nguồn:
+1. Hệ thống tự động bỏ qua các phần tử null hoặc rỗng {} nhờ điều kiện kiểm tra tính tồn tại của đối tượng (user && ...).
+2. Chữ "vip" viết thường bị loại bỏ vì hệ thống phân biệt nghiêm ngặt chữ hoa chữ thường, đảm bảo chuẩn hóa dữ liệu.
+3. Đối tượng thiếu thuộc tính email tự động bị loại khỏi danh sách gửi thư gửi đi.
+4. Trường totalSpent dạng chuỗi ("500") và số âm (-100) được hàm Number() xử lý và cộng dồn chuẩn xác mà không gây ra lỗi văng mã nguồn (NaN hoặc Crash).
