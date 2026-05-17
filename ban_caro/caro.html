@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caro Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="button"] {
+            padding: 8px 15px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        #carogame {
+            font-family: monospace;
+            font-size: 24px;
+            letter-spacing: 5px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Caro Game Simple</h3>
+    <div id="carogame"></div>
+    <input type="button" value="Change Value" onclick="changeValue()">
+
+    <script>
+        let b = document.getElementById("carogame");
+        let board = [];
+        let data = "";
+
+        for (let i = 0; i < 5; i++) {
+            board[i] = [0, 0, 0, 0, 0];
+        }
+
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;";
+            }
+        }
+
+        b.innerHTML = data;
+
+        function changeValue() {
+            let positionX = prompt("X: ");
+            let positionY = prompt("Y: ");
+            data = "";
+            
+            board[positionX][positionY] = "x";
+            
+            for (let i = 0; i < 5; i++) {
+                data += "<br/>";
+                for (let j = 0; j < 5; j++) {
+                    data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                }
+            }
+            
+            b.innerHTML = "<hr/>" + data;
+        }
+    </script>
+
+</body>
+</html>
