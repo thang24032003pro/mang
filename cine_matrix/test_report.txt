@@ -1,0 +1,29 @@
+========================================================================
+HỆ THỐNG CINEMATRIX - NHẬT KÝ THỬ NGHIỆM (TEST REPORT)
+========================================================================
+
+--- TRƯỜNG HỢP 1: Đặt ghế trống thành công (Vé thường) ---
+- Lệnh gọi: bookSeat(0, 0, 0)
+- Trạng thái ghế trước đặt: 0
+- Kết quả: "Đặt ghế [0][0] thành công! Giá vé: 50000 VND."
+- Trạng thái ghế sau đặt: 1
+
+--- TRƯỜNG HỢP 2: Đặt ghế thất bại do trùng vị trí đã có người đặt ---
+- Lệnh gọi: bookSeat(0, 1, 1)
+- Trạng thái ghế trước đặt: 1
+- Kết quả: "Thất bại: Ghế tại vị trí [0][1] đã có người đặt!"
+
+--- TRƯỜNG HỢP 3: Lỗi vị trí - Số hàng vượt quá kích thước của sơ đồ ---
+- Lệnh gọi: bookSeat(10, 2, 0)
+- Kết quả: "Lỗi: Hàng ghế không tồn tại trên hệ thống!"
+- Đánh giá: Chặn lỗi an toàn, không làm crash server.
+
+--- TRƯỜNG HỢP 4: Lỗi vị trí - Số cột nhận giá trị âm ---
+- Lệnh gọi: bookSeat(2, -3, 0)
+- Kết quả: "Lỗi: Cột ghế không tồn tại trên hệ thống!"
+- Đánh giá: Điều kiện biên hoạt động chính xác.
+
+--- TRƯỜNG HỢP 5: Lỗi dữ liệu đầu vào - Loại vé không tồn tại ---
+- Lệnh gọi: bookSeat(4, 4, 5)
+- Kết quả: "Lỗi: Loại vé không hợp lệ!"
+- Đánh giá: Kiểm soát tốt logic liên kết giữa hai mảng.

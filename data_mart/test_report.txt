@@ -1,0 +1,30 @@
+========================================================================
+HỆ THỐNG DATAMART - NHẬT KÝ THỬ NGHIỆM (TEST REPORT)
+========================================================================
+
+--- TRƯỜNG HỢP 1: Chạy thử với mảng dữ liệu chuẩn mặc định ---
+- Lệnh gọi: calculateTotalRevenue(orders)
+- Kết quả console: Total Revenue: 440
+- Đánh giá: Kết quả chính xác (110 + 330), khớp hoàn toàn với mã nguồn cũ.
+
+--- TRƯỜNG HỢP 2: Chạy thử với mảng dữ liệu rỗng ---
+- Lệnh gọi: calculateTotalRevenue([])
+- Kết quả console: Total Revenue: 0
+- Đánh giá: Hàm xử lý an toàn, trả về giá trị mặc định là 0 mà không bị lỗi.
+
+--- TRƯỜNG HỢP 3: Chạy thử với mảng dữ liệu dị thường (Edge cases) ---
+Bộ dữ liệu dị thường đưa vào thử nghiệm:
+[
+    { id: 1, status: "Pending", price: 100, tax: 10 },
+    { id: 2, status: "Delivered", price: "150", tax: 10 },
+    { id: 3, status: "Delivered", price: 200, tax: -20 },
+    null,
+    { id: 4, status: "Delivered" }
+]
+- Lệnh gọi: calculateTotalRevenue(edgeOrders)
+- Kết quả console: Total Revenue: 340
+- Đánh giá: 
+1. Bỏ qua đơn hàng "Pending" chính xác.
+2. Ép kiểu thành công giá trị dạng chuỗi "150" về dạng số để cộng dồn.
+3. Chấp nhận giá trị âm của thuế giảm trừ hợp lệ (200 - 20 = 180).
+4. Hệ thống tự động bỏ qua phần tử null và phần tử thiếu thuộc tính mà không gây crash hệ thống.
