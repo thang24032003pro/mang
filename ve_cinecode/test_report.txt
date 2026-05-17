@@ -1,0 +1,31 @@
+========================================================================
+HỆ THỐNG ĐẶT VÉ CINECODE - NHẬT KÝ THỬ NGHIỆM (TEST REPORT)
+========================================================================
+
+--- TRƯỜNG HỢP 1: Đặt ghế trống thành công ---
+- Lệnh gọi: bookSeat(0, 0)
+- Trạng thái ghế trước khi đặt: 0
+- Kết quả trả về: "Thành công: Đã đặt ghế tại hàng 0, cột 0!"
+- Trạng thái ghế sau khi đặt: 1 (Hợp lệ)
+
+--- TRƯỜNG HỢP 2: Đặt ghế thất bại do trùng (Ghế đã có người ngồi) ---
+- Lệnh gọi: bookSeat(0, 1)
+- Trạng thái ghế trước khi đặt: 1
+- Kết quả trả về: "Thất bại: Ghế tại hàng 0, cột 1 đã có người đặt!"
+- Trạng thái hệ thống: Không bị ghi đè, giữ nguyên cấu trúc mảng. (Hợp lệ)
+
+--- TRƯỜNG HỢP 3: Nhập tọa độ ma lanh - Số hàng vượt quá kích thước mảng ---
+- Lệnh gọi: bookSeat(99, 2)
+- Kết quả trả về: "Lỗi: Số hàng không tồn tại!"
+- Trạng thái hệ thống: Không bị crash văng lỗi "Cannot read properties of undefined". (Hợp lệ)
+
+--- TRƯỜNG HỢP 4: Nhập tọa độ ma lanh - Số cột là số âm ---
+- Lệnh gọi: bookSeat(2, -5)
+- Kết quả trả về: "Lỗi: Số cột không tồn tại!"
+- Trạng thái hệ thống: Được chặn từ vòng điều kiện kiểm tra biên. (Hợp lệ)
+
+--- TRƯỜNG HỢP 5: Thêm khách hàng mới vào danh sách chờ ---
+- Lệnh gọi: addCustomerToWaitlist("PhamVanD")
+- Trạng thái danh sách trước khi gọi: ["NguyenVanA", "TranThiB", "LeVanC"] (Độ dài: 3)
+- Kết quả trả về: "Đã thêm PhamVanD vào danh sách chờ. Vị trí hiện tại: 4"
+- Trạng thái danh sách sau khi gọi: ["NguyenVanA", "TranThiB", "LeVanC", "PhamVanD"] (Hợp lệ)
