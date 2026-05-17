@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Mảng và Chuỗi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .exercise-box {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+        }
+        input[type="text"] {
+            padding: 6px;
+            width: 280px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result-display {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #28a745;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="exercise-box">
+        <h3>Bài 1: In các phần tử trong mảng 2 chiều</h3>
+        <button onclick="runExercise1()">In mảng 2D</button>
+        <div id="res1" class="result-display"></div>
+    </div>
+
+    <div class="exercise-box">
+        <h3>Bài 2: Đảo ngược mảng ký tự</h3>
+        <button onclick="runExercise2()">Đảo ngược mảng ['c', 's', 'c', '2', '6', '1']</button>
+        <div id="res2" class="result-display"></div>
+    </div>
+
+    <div class="exercise-box">
+        <h3>Bài 3: Đếm số ký tự số trong mảng</h3>
+        <button onclick="runExercise3()">Đếm ký tự số trong mảng mẫu</button>
+        <div id="res3" class="result-display"></div>
+    </div>
+
+    <div class="exercise-box">
+        <h3>Bài 4: Đếm số từ trong một chuỗi</h3>
+        <input type="text" id="inputStr4" placeholder="Nhập vào một chuỗi văn bản...">
+        <button onclick="runExercise4()">Đếm từ</button>
+        <div id="res4" class="result-display"></div>
+    </div>
+
+    <div class="exercise-box">
+        <h3>Bài 5: Kiểm tra hai chuỗi giống nhau</h3>
+        <input type="text" id="inputStr5a" placeholder="Nhập chuỗi thứ nhất...">
+        <input type="text" id="inputStr5b" placeholder="Nhập chuỗi thứ hai...">
+        <button onclick="runExercise5()">So sánh chuỗi</button>
+        <div id="res5" class="result-display"></div>
+    </div>
+
+    <div class="exercise-box">
+        <h3>Bài 6: Thay thế ký tự '-' bằng '_'</h3>
+        <input type="text" id="inputStr6" placeholder="Nhập chuỗi ký tự (Ví dụ: a-b-c-d)">
+        <button onclick="runExercise6()">Thay thế ký tự</button>
+        <div id="res6" class="result-display"></div>
+    </div>
+
+    <script>
+        function runExercise1() {
+            let a = [
+                [1, 2, 1, 24],
+                [8, 11, 9, 4],
+                [7, 0, 7, 27],
+                [7, 4, 28, 14],
+                [3, 10, 26, 7]
+            ];
+            let output = "";
+            for (let i = 0; i < a.length; i++) {
+                output += '"row ' + i + '"\n';
+                for (let j = 0; j < a[i].length; j++) {
+                    output += '" ' + a[i][j] + '"\n';
+                }
+            }
+            document.getElementById("res1").innerText = output;
+        }
+
+        function runExercise2() {
+            let arr = ['c', 's', 'c', '2', '6', '1'];
+            let reversedStr = "";
+            for (let i = arr.length - 1; i >= 0; i--) {
+                reversedStr += arr[i];
+            }
+            document.getElementById("res2").innerText = "Kết quả: " + reversedStr;
+        }
+
+        function runExercise3() {
+            let sampleArr = ['h', 'e', 'l', 'l', 'o', '2', '0', '2', '6', 'n', 'e', 'w', 'y', 'e', 'a', 'r'];
+            let count = 0;
+            for (let i = 0; i < sampleArr.length; i++) {
+                if (sampleArr[i] >= '0' && sampleArr[i] <= '9') {
+                    count++;
+                }
+            }
+            document.getElementById("res3").innerText = "Mảng mẫu: [" + sampleArr.join(", ") + "]\nSố ký tự số đếm được: " + count;
+        }
+
+        function runExercise4() {
+            let str = document.getElementById("inputStr4").value.trim();
+            if (str === "") {
+                document.getElementById("res4").innerText = "Số từ: 0";
+                return;
+            }
+            let words = str.split(/\s+/);
+            document.getElementById("res4").innerText = "Số từ: " + words.length;
+        }
+
+        function runExercise5() {
+            let str1 = document.getElementById("inputStr5a").value;
+            let str2 = document.getElementById("inputStr5b").value;
+            if (str1 === str2) {
+                document.getElementById("res5").innerText = "Kết quả: Hai chuỗi hoàn toàn giống nhau.";
+            } else {
+                document.getElementById("res5").innerText = "Kết quả: Hai chuỗi khác nhau.";
+            }
+        }
+
+        function runExercise6() {
+            let rawInput = document.getElementById("inputStr6").value;
+            let charArray = rawInput.split("");
+            for (let i = 0; i < charArray.length; i++) {
+                if (charArray[i] === '-') {
+                    charArray[i] = '_';
+                }
+            }
+            document.getElementById("res6").innerText = "Mảng kết quả: [" + charArray.join(", ") + "]\nChuỗi hoàn chỉnh: " + charArray.join("");
+        }
+    </script>
+
+</body>
+</html>
