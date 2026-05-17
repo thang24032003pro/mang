@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý phần tử trong mảng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+        input[type="button"] {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Sample Screen:</h2>
+    <input type="text" id="txtValue" placeholder="Nhập phần tử tại đây...">
+    <input type="button" id="btnAdd" value="Add" onclick="add_element_to_array();">
+    <input type="button" id="btnDisplay" value="Display" onclick="display_array();">
+    
+    <div id="result"></div>
+
+    <script>
+        let x = 0;
+        let array = Array();
+
+        function add_element_to_array() {
+            let inputValue = document.getElementById("txtValue").value;
+            array[x] = inputValue;
+            alert("Element: " + array[x] + " Added at index " + x);
+            x++;
+            document.getElementById("txtValue").value = "";
+        }
+
+        function display_array() {
+            let e = "<hr/>";
+            for (let i = 0; i < array.length; i++) {
+                e += "Element " + i + " = " + array[i] + "<br/>";
+            }
+            document.getElementById("result").innerHTML = e;
+        }
+    </script>
+
+</body>
+</html>
