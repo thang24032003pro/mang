@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TechBugs Hackathon - Landing Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>TechBugs Hackathon</h1>
+      <p class="tag">Innovate. Build. Ship.</p>
+      <nav>
+        <ul>
+          <li><a href="#home">Trang chủ</a></li>
+          <li><a href="#schedule">Lịch trình</a></li>
+          <li><a href="#register">Đăng ký</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <h2>Chào mừng đến với TechBugs Hackathon</h2>
+        <p>Trang chính thức cuộc thi — tìm hiểu, chiến lược và đăng ký ngay.</p>
+      </div>
+    </section>
+
+    <section id="schedule" class="container">
+      <h2>Lịch trình 2 ngày</h2>
+      <div class="card">
+        <table class="schedule" aria-describedby="schedule-desc">
+          <caption id="schedule-desc">Lịch trình chi tiết trong 2 ngày với các phiên và workshop</caption>
+          <thead>
+            <tr>
+              <th>Thời gian</th>
+              <th>Ngày 1</th>
+              <th>Ngày 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Thời gian">09:00 - 10:00</td>
+              <td data-label="Ngày 1" rowspan="2">Khai mạc &amp; Keynote<br><strong>Speaker: CEO</strong></td>
+              <td data-label="Ngày 2">Workshop: Cloud Basics</td>
+            </tr>
+            <tr>
+              <td data-label="Thời gian">10:00 - 12:00</td>
+              <td data-label="Ngày 2">Panel: Product &amp; Dev</td>
+            </tr>
+            <tr>
+              <td data-label="Thời gian">12:00 - 13:00</td>
+              <td data-label="Cả hai" colspan="2">Ăn trưa chung</td>
+            </tr>
+            <tr>
+              <td data-label="Thời gian">13:00 - 15:00</td>
+              <td data-label="Ngày 1">Hacking Session</td>
+              <td data-label="Ngày 2">Hacking Session</td>
+            </tr>
+            <tr>
+              <td data-label="Thời gian">15:00 - 17:00</td>
+              <td data-label="Ngày 1">Mentor Office Hours</td>
+              <td data-label="Ngày 2">Submit &amp; Final Review</td>
+            </tr>
+            <tr>
+              <td data-label="Thời gian">18:00 - 20:00</td>
+              <td data-label="Cả hai" colspan="2">Demo Night &amp; Awards Ceremony</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="register" class="container">
+      <h2>Đăng ký đội thi</h2>
+      <form id="registerForm" novalidate>
+        <fieldset>
+          <legend>Thông tin đội</legend>
+          <div class="grid">
+            <div>
+              <label for="teamName">Tên đội</label>
+              <input id="teamName" name="teamName" type="text" required>
+            </div>
+            <div>
+              <label for="contactEmail">Email liên hệ</label>
+              <input id="contactEmail" name="contactEmail" type="email" required>
+            </div>
+            <div>
+              <label for="password">Mật khẩu (để quản lý đăng ký)</label>
+              <input id="password" name="password" type="password" minlength="8" required>
+            </div>
+            <div>
+              <label for="numMembers">Số thành viên (1-5)</label>
+              <input id="numMembers" name="numMembers" type="number" value="3" min="1" max="5" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Thành viên (tối đa 5)</legend>
+          <div id="members" class="grid">
+            <label>Thành viên 1 <input name="memberName" type="text" required></label>
+            <label>Thành viên 2 <input name="memberName" type="text"></label>
+            <label>Thành viên 3 <input name="memberName" type="text"></label>
+            <label>Thành viên 4 <input name="memberName" type="text"></label>
+            <label>Thành viên 5 <input name="memberName" type="text"></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Chi tiết thi đấu</legend>
+          <div class="grid">
+            <div>
+              <label>Track</label>
+              <label><input type="radio" name="track" value="frontend" checked> Frontend</label>
+              <label><input type="radio" name="track" value="backend"> Backend</label>
+              <label><input type="radio" name="track" value="ai"> AI/ML</label>
+            </div>
+            <div>
+              <label>Kỹ năng (chọn)</label>
+              <label><input type="checkbox" name="skill" value="design"> Design</label>
+              <label><input type="checkbox" name="skill" value="js"> JavaScript</label>
+              <label><input type="checkbox" name="skill" value="python"> Python</label>
+              <label><input type="checkbox" name="skill" value="cloud"> Cloud</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Phí và Xác nhận</legend>
+          <label for="promo">Mã khuyến mãi</label>
+          <input id="promo" name="promo" type="text" placeholder="Nhập mã (ví dụ: TECH50)">
+
+          <label><input id="earlyBird" name="earlyBird" type="checkbox"> Early Bird (20% giảm)</label>
+
+          <div id="feeSummary">Tổng phí: <span id="totalFee" class="badge">₫0</span></div>
+          <ul id="feeBreakdown" aria-live="polite"></ul>
+        </fieldset>
+
+        <button type="submit">Gửi đăng ký</button>
+        <div id="messages" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© TechBugs Hackathon — All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
